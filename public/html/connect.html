@@ -1,0 +1,58 @@
+<div>
+    <h2>Connexion</h2>
+    <form id="toConnectForm" method="post">
+        <label>Pseudo :
+            <br />
+            <input id="pseudo" type="text" name="pseudo" required="" />
+        </label>
+        <br />
+        <label>Mot de passe :
+            <br />
+            <input id="mdp" type="text" name="mdp" required="" />
+        </label>
+        <br />
+        <input id="submitToConnect" type="submit" value="Me connecter" />
+        <label class="error" id="errorMessage">
+        </label>
+        <br />
+        <input id="toCreateAccount" type="button" class="buttonNav" value="Créer un compte"/>
+    </form>
+</div>
+<script>
+    $(document).ready(function () {
+        $('#toCreateAccount').click(function() {
+            emitToCreateAccount()
+        })
+
+        $("#toConnectForm").validate({
+            rules: {
+                pseudo: {
+                    "required": true,
+                    "minlength": 3,
+                    "maxlength": 10
+                },
+                mdp: {
+                    "required": true,
+                    "minlength": 6,
+                    "maxlength": 12
+                }
+            },
+            messages: {
+                pseudo: {
+                    "required": "Veuillez indiquer un pseudo",
+                    "minlength": "Minimum 3 caractères",
+                    "maxlength": "Maximum 10 caractères"
+                },
+                mdp: {
+                    "required": "Veuillez saisir un mot de passe",
+                    "minlength": "Minimum 6 caractères",
+                    "maxlength": "Maximum 12 caractères"
+                }
+            },
+            validClass: "success",
+            submitHandler: function () {
+                emitReqConnexion()
+            }
+        })
+    })
+</script>

@@ -1,0 +1,22 @@
+<h1>GAME</h1>
+<section id='tableau-score'>
+        <div id="game1">
+            <h2 id="joueur1"></h2><br>
+            <h3 id="score1">0</h3>
+        </div>
+        <div id="separator"><h2 id="contenu-separator">vs</h2><br><p>Objectif<br> <span id="but">12</span></p></div>
+        <div id="game2">
+            <h2 id="joueur2"></h2><br>
+            <h3 id="score2">0</h3>
+        </div>
+        <div id="tour"></div>
+    </section>
+
+    <section>
+        <canvas id="canvas" width="400px" height="400px"></canvas>
+    </section>
+
+    <script>
+        var canvas = document.getElementById("canvas")
+        var ctx = canvas.getContext("2d")
+    </script>
