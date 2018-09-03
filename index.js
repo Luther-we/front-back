@@ -1,9 +1,3 @@
-
-
-
-
-//   mongodb://heroku_rgz600fc:ttq2i95ffer6i8aj4958tcgkut@ds141902.mlab.com:41902/heroku_rgz600fc
-
 ////// TODO
 // PERSISTENCE CONNECTION
 // REMPLASSER COULEUR PAR AVATAR
@@ -83,12 +77,13 @@ app.get('/', function (req, res, next) {
 
 io.sockets.on('connect', function (socket) {
     socket.emit('id', socket.id)
+    console.log('salut je suis ici')
 
     connectOrNotConnect = function (chemin, userIdClient) {
         mongo.connect(element.urlUser, {
             useNewUrlParser: true
         }, function (err, client) {
-            const collectionUser = client.db(element.dbName).collection('user')
+            const collectionUser = client.db("heroku_rgz600fc").collection('user')
             if (err) {  
                 console.log('xxxx - erreur mongo connexion au connectOrNotConnect = ', err)
             } else {
@@ -175,7 +170,7 @@ io.sockets.on('connect', function (socket) {
         mongo.connect(element.urlUser, {
             useNewUrlParser: true
         }, function (err, client) {
-            const collectionUser = client.db(element.dbName).collection('user')
+            const collectionUser = client.db("heroku_rgz600fc").collection('user')
             if (err) {
                 console.log('xxxx - erreur mongo connexion au socketOn inscription = ', err)
             } else {
@@ -227,7 +222,7 @@ io.sockets.on('connect', function (socket) {
             if (err) {
                 console.log('xxxx - erreur mongo connexion au socketOn submitConnect = ', err)
             } else {
-                const collectionUser = client.db(element.dbName).collection('user')
+                const collectionUser = client.db("heroku_rgz600fc").collection('user')
                 collectionUser.findOne({
                     $and: [{
                         pseudo: data.pseudo
@@ -280,7 +275,7 @@ io.sockets.on('connect', function (socket) {
                 mongo.connect(element.urlUser, {
                     useNewUrlParser: true
                 }, function (err, client) {
-                    const collectionUser = client.db(element.dbName).collection('user')
+                    const collectionUser = client.db("heroku_rgz600fc").collection('user')
                     if (err) {
                         console.log('xxxx - erreur mongo connexion au joueur 1wantPlay = ', err)
                     } else {
@@ -319,7 +314,7 @@ io.sockets.on('connect', function (socket) {
                 mongo.connect(element.urlUser, {
                     useNewUrlParser: true
                 }, function (err, client) {
-                    const collectionUser = client.db(element.dbName).collection('user')
+                    const collectionUser = client.db("heroku_rgz600fc").collection('user')
                     if (err) {
                         console.log('xxxx - erreur mongo connexion au joueur 1wantPlay = ', err)
                     } else {

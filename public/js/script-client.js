@@ -1,6 +1,6 @@
 window.addEventListener('DOMContentLoaded', function () {
     // valeur en dev
-    const socket = io.connect()
+    const socket = io()
     // valeur en prod
     // const socket = io.connect('http://155.133.132.6:8080/')
 
