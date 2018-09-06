@@ -1,22 +1,147 @@
 <h1>GAME</h1>
 <section id='tableau-score'>
-        <div id="game1">
-            <h2 id="joueur1"></h2><br>
-            <h3 id="score1">0</h3>
-        </div>
-        <div id="separator"><h2 id="contenu-separator">vs</h2><br><p>Objectif<br> <span id="but">12</span></p></div>
-        <div id="game2">
-            <h2 id="joueur2"></h2><br>
-            <h3 id="score2">0</h3>
-        </div>
-        <div id="tour"></div>
-    </section>
+    <div id="game1">
+        <h2 id="joueur1"></h2><br>
+        <h3 id="score1">0</h3>
+    </div>
+    <div id="separator">
+        <h2 id="contenu-separator">vs</h2><br>
+        <p>Objectif<br> <span id="but">12</span></p>
+    </div>
+    <div id="game2">
+        <h2 id="joueur2"></h2><br>
+        <h3 id="score2">0</h3>
+    </div>
+    <div id="tour"></div>
+</section>
 
-    <section>
-        <canvas id="canvas" width="400px" height="400px"></canvas>
-    </section>
+<section>
+    <canvas id="canvas" width="400px" height="400px"></canvas>
+</section>
 
-    <script>
-        var canvas = document.getElementById("canvas")
-        var ctx = canvas.getContext("2d")
-    </script>
+<script>
+    $(document).ready(function () {
+        var elementJeu = {
+            tolerance: 3,
+            reference: 50,
+            tabCarre: []
+        }
+
+        canvas.addEventListener('click', function (event) {
+            clickEventEmit(event)
+        })
+
+        canvas.addEventListener('mousemove', function (event) {
+            let x = event.offsetX
+            let y = event.offsetY
+            survol(x, y)
+        })
+
+        var survol = function (x, y) {
+            elementJeu.tabCarre.forEach(function (element){
+                if (element.bordHaut.use) {
+                    if (x<element.bordHaut.xFin && x>element.bordHaut.xDebut && y<element.bordHaut.y+elementJeu.tolerance && y>element.bordHaut.y-elementJeu.tolerance) {
+                        element.bordHaut.color = 'red';
+                        drawBordHaut(element);
+                    } else  {
+                        element.bordHaut.color = '#BDDAFF';
+                        drawBordHaut(element);
+                    }
+                }
+
+                if (element.bordDroit.use) {
+                    if (x<element.bordDroit.x+elementJeu.tolerance && x>element.bordDroit.x-elementJeu.tolerance && y<element.bordDroit.yFin && y>element.bordDroit.yDebut) {
+                        element.bordDroit.color = 'red';
+                        drawBordDroit(element);
+                    } else {
+                        element.bordDroit.color = '#BDDAFF';
+                        drawBordDroit(element);
+                    }
+                }
+
+                if (element.bordGauche.use) {
+                    if (x<element.bordGauche.x+elementJeu.tolerance && x>element.bordGauche.x-elementJeu.tolerance && y>element.bordGauche.yFin && y<element.bordGauche.yDebut) {
+                        element.bordGauche.color = 'red';
+                        drawBordGauche(element);
+                    } else {
+                        element.bordGauche.color = '#BDDAFF';
+                        drawBordGauche(element);
+                    }
+                }
+                
+                if (element.bordBas.use) {
+                    if (x>element.bordBas.xFin && x<element.bordBas.xDebut && y<element.bordBas.y+elementJeu.tolerance && y>element.bordBas.y-elementJeu.tolerance ) {
+                        element.bordBas.color  = 'red';
+                        drawBordBas(element);
+                    } else {
+                        element.bordBas.color  = '#BDDAFF';
+                        drawBordBas(element);
+                    }
+                }
+            })
+        }
+
+        var drawBordHaut = function (element) {
+            ctx.strokeStyle = "#0099CC"
+            ctx.beginPath()
+            ctx.moveTo(element.bordHaut.xDebut, element.bordHaut.y)
+            ctx.lineTo(element.bordHaut.xFin, element.bordHaut.y)
+            ctx.stroke()
+            ctx.closePath()
+        }
+
+        var drawBordDroit = function (element) {
+            ctx.strokeStyle = element.bordDroit.color;
+            ctx.beginPath();
+            ctx.moveTo(element.bordDroit.x, element.bordDroit.yDebut);
+            ctx.lineTo(element.bordDroit.x, element.bordDroit.yFin);
+            ctx.stroke();
+            ctx.closePath();
+        }
+
+        var drawBordBas = function (element) {
+            ctx.strokeStyle = element.bordBas.color;
+            ctx.beginPath();
+            ctx.moveTo(element.bordBas.xDebut, element.bordBas.y);
+            ctx.lineTo(element.bordBas.xFin, element.bordBas.y);
+            ctx.stroke();
+            ctx.closePath();
+        }
+
+        var drawBordGauche = function (element) {
+            ctx.strokeStyle = element.bordGauche.color;
+            ctx.beginPath();
+            ctx.moveTo(element.bordGauche.x, element.bordGauche.yDebut);
+            ctx.lineTo(element.bordGauche.x, element.bordGauche.yFin)
+            ctx.stroke();
+            ctx.closePath();
+        }
+        
+        var drawCarre = function (element) {
+            ctx.fillStyle = element.color;
+            ctx.beginPath();
+            ctx.fillRect (element.x, element.y, elementJeu.reference, elementJeu.reference);
+            ctx.closePath();
+        }
+
+        echangeGrille = function (tabCarre) {
+            elementJeu.tabCarre = tabCarre
+        }
+
+        drawGrille = function (tabCarre) {
+            elementJeu.tabCarre = tabCarre
+            tabCarre.forEach(function (element) {
+                drawBordBas(element)
+                drawBordDroit(element)
+                drawBordGauche(element)
+                drawBordHaut(element)
+                if (element.propertyOf != "") {
+                    drawCarre(element);
+                }
+            })
+        }
+    })
+
+    var canvas = document.getElementById("canvas")
+    var ctx = canvas.getContext("2d")
+</script>

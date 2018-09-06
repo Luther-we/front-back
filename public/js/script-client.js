@@ -20,7 +20,6 @@ window.addEventListener('DOMContentLoaded', function () {
 
         $('#play').click(function () {
             socket.emit('play', element.userId)
-            console.log('ok')
         })
 
         $('#hightscore').click(function () {
@@ -32,7 +31,6 @@ window.addEventListener('DOMContentLoaded', function () {
         })
         //////////////////// SOCKET EMIT
         emitToCreateAccount = function () {
-            console.log('emit createAccount')
             socket.emit('toCreateAccount')
         }
 
@@ -44,7 +42,6 @@ window.addEventListener('DOMContentLoaded', function () {
             let mail = document.getElementById('mail').value
             let mdp = document.getElementById('mdp').value
             let userId = element.userId
-            console.log('// Emit client - inscription - = ', prenom, nom, pseudo, mail, mdp)
             socket.emit('inscription', {
                 prenom,
                 nom,
@@ -61,7 +58,6 @@ window.addEventListener('DOMContentLoaded', function () {
             let pseudo = document.getElementById('pseudo').value
             let mdp = document.getElementById('mdp').value
             let userId = element.userId
-            console.log('// Emit client - inscription - = ', pseudo, mdp)
             socket.emit('submitConnect', {
                 pseudo,
                 mdp,
@@ -82,7 +78,6 @@ window.addEventListener('DOMContentLoaded', function () {
     //////////////////// SOCKET ON
     socket.on('id', function (data) {
         element.userId = data
-        console.log(element)
     })
 
     socket.on('recoi', function (data) {
@@ -91,7 +86,6 @@ window.addEventListener('DOMContentLoaded', function () {
     })
 
     socket.on('retourConnect', function (data) {
-        console.log('++ On client - retourConnexion - = ', data)
         if (data.message) {
             $('#contenu').empty()
             $('#contenu').append(data.filedata)
@@ -104,7 +98,6 @@ window.addEventListener('DOMContentLoaded', function () {
     })
 
     socket.on('retourInscription', function (data) {
-        console.log('++ On client - retourInscription - = ', data.console)
         if (data.success) {
             $('#contenu').empty()
             $('#contenu').append(data.filedata)
@@ -116,19 +109,30 @@ window.addEventListener('DOMContentLoaded', function () {
         }
     })
 //////////////// THE GAME !!!!!!!!!!!!!!!!!
-
-
-    socket.on('demarrageGame', function (data) {
-        console.log(data)
+    socket.on('gameBegin', function (data) {
         $('#contenu').empty()
         $('#contenu').append(data.filedata)
         $('#joueur1').append(data.joueur1.pseudo)
         $('#score1').append(data.joueur1.score)
         $('#joueur2').append(data.joueur2.pseudo)
         $('#score2').append(data.joueur2.score)
-        // socket.emit('askForGrille')
+        console.log(data.grille)
+        setTimeout(function(){
+            drawGrille(data.grille)
+        }, 1000)
     })
 
-    // socket.on('grille')
+    socket.on('dessinGrille', function(data) {
+        console.log(data)
+        drawGrille(data)
+    })
 
+    clickEventEmit = function (event) {
+        let offsetX = event.offsetX
+        let offsetY = event.offsetY
+        // let offset
+        console.log('un click', event.offsetX)
+        console.log('un click', event.offsetY)
+        socket.emit('clickEvent', {offsetX, offsetY})
+    }
 }, false)
