@@ -29,7 +29,7 @@ color: white;
 
 header {
 height: 18vmin;
-padding: 5vmin;
+padding-top: 5vmin;
 width: 100%; 
 display: inline-block;
 
@@ -47,6 +47,7 @@ color: white;
 form {
 width: 20%;
 margin: auto;
+text-align: center;
 }
 
 h2 {
@@ -144,7 +145,29 @@ color: red;
 
 h5 {
     margin: auto;
+    margin-top: 3vmin;
+    margin-bottom: 3vmin;
     text-align: center;
     font-family: 'Montserrat', sans-serif;
     font-size: 1.5vmax;
+}
+
+.contenu {
+    width: 60%;
+    margin: auto;
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+}
+
+li {
+    font-family: 'Montserrat', sans-serif;
+    list-style-type: square;
+    padding: 0.5vmin;
+    text-align: left;
+    
+}
+
+.bestScore {
+    list-style: none;
+    text-align: center;
 }
