@@ -54,10 +54,10 @@ app.use('/lib', express.static(path.join(__dirname + '/node_modules/socket.io-cl
 app.use('/lib', express.static(path.join(__dirname + '/node_modules/jquery-validation/dist/')))
 
 const element = {
-    // urlUser: "mongodb://heroku_rgz600fc:ttq2i95ffer6i8aj4958tcgkut@ds141902.mlab.com:41902/heroku_rgz600fc",
-    // dbName: "heroku_rgz600fc"
-    dbName : "db",
-    urlUser : "mongodb://localhost:27017/user"
+    urlUser: "mongodb://heroku_rgz600fc:ttq2i95ffer6i8aj4958tcgkut@ds141902.mlab.com:41902/heroku_rgz600fc",
+    dbName: "heroku_rgz600fc"
+    // dbName : "db",
+    // urlUser : "mongodb://localhost:27017/user"
 }
 
 let joueur1 = {
