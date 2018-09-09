@@ -1,0 +1,16 @@
+<div class="contenu">
+    <h1>Ton collègue s'est déconnecté</h1>
+    <h5 id="message"></h5>
+    <input id="newGame" type="button" class="buttonNav" value="Recommencer une partie" />
+    <input id="backToAccount" type="button" class="buttonNav" value="Retour à mon compte " />
+</div>
+
+<script>
+    $("#newGame").click(function () {
+        emitNewGame()
+    });
+
+    $("#backToAccount").click(function () {
+        emitMyAccount()
+    });
+</script>

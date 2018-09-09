@@ -11,7 +11,7 @@
             <input id="mdp" type="text" name="mdp" required="" />
         </label>
         <br />
-        <input id="submitToConnect" type="submit" value="Me connecter" />
+        <input id="submitToConnect" type="submit" value="Me connecter" /><br>
         <label class="error" id="errorMessage">
         </label>
         <br />
@@ -22,7 +22,7 @@
     $(document).ready(function () {
         $('#toCreateAccount').click(function() {
             emitToCreateAccount()
-        })
+        });
 
         $("#toConnectForm").validate({
             rules: {

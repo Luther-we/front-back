@@ -1,17 +1,46 @@
 <div class="contenu">
     <h5>Pseudo</h5>
-        <p>Tu as cliqué : <span>XXX</span>carré depuis ton inscription</p>
-        <p>Tu as remporté <span>XXXX</span> parties pour <span>XXXX</span> parties jouées</p>
-        <p>Tes 5 meilleurs scores :</p>
-        <ul>
-            <li class="bestScore"><span> XX </span> carrés contre <span> XX </span> (c’était contre <span>Paul</span>)</li>
-            <li class="bestScore"><span> XX </span> carrés contre <span> XX </span> (c’était contre <span>Paul</span>)</li>
-            <li class="bestScore"><span> XX </span> carrés contre <span> XX </span> (c’était contre <span>Paul</span>)</li>
-            <li class="bestScore"><span> XX </span> carrés contre <span> XX </span> (c’était contre <span>Paul</span>)</li>
-            <li class="bestScore"><span> XX </span> carrés contre <span> XX </span> (c’était contre <span>Paul</span>)</li>
-        </ul>
-
-        <input id="toDisconnect" type="button" class="buttonNav" value="Se déconnecter"/>
-        <input id="toDeleteAccount" type="button" class="buttonNav" value="Supprimer mon compte"/>
+    <p>Tu as cliqué : <span id="scoreTotal" class="info"></span> carrés depuis ton inscription</p>
+    <p>Tu as remporté <span id="winGame" class="info"></span> partie(s) pour <span id="playGame" class="info"></span> parties jouées</p><br>
+    <p>Tes scores :</p>
+    <ul id="listeJeu"></ul>
+    <input id="toDisconnect" type="button" class="buttonNav" value="Se déconnecter" />
+    <input id="toDeleteAccount" type="button" class="buttonNav" value="Supprimer mon compte" />
+    <br>
+    <input id="toSee" type="button" class="buttonNav" value="Suis-je un champion ?" />
 </div>
 
+<script>
+    writeDataJoeur = function (data) {
+        let scoreTotal = 0;
+        let playGame = 0;
+        let winGame = 0;
+        let puce = "";
+        data.forEach(element => {
+            scoreTotal = scoreTotal + element.scoreJoueur;
+            playGame += 1;
+            if (element.win) {
+                puce = "<li class=\"bestScore\"><span>"+ element.scoreJoueur + "</span> carrés contre <span> " + element.scoreAdverse + " </span> (c’était contre <span> " + element.pseudoAdverse + "</span> et tu as gagné)</li>"
+                winGame += 1
+            } else {
+                puce = "<li class=\"bestScore\"><span>"+ element.scoreJoueur + " </span> carrés contre <span> " + element.scoreAdverse + " </span> (c’était contre <span>" + element.pseudoAdverse + "</span> et tu as lamentablement perdu)"
+            }
+            $("#listeJeu").append(puce)
+        });
+        $("#scoreTotal").append(scoreTotal);
+        $("#winGame").append(winGame);
+        $("#playGame").append(playGame);
+    };
+
+    $("#toSee").click(function () {
+        emitMyAccount()
+    });
+
+    $("#toDisconnect").click(function () {
+        emitDisconnect()
+    });
+
+    $("#toDeleteAccount").click(function () {
+        emitDeleteAccount()
+    });
+</script>

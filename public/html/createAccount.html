@@ -1,11 +1,21 @@
-<form id="inscriptionForm" method="post"><label>Pr&eacute;nom : <br /><input id="prenom" type="text" name="prenom"
-            required="" /></label><br /><label>Nom : <br /><input id="nom" type="text" name="nom" required="" /></label><br /><label>Pseudo
-        : <br /><input id="pseudo" type="text" name="pseudo" minlength="3" maxlength="10" required="" /><label class="error"
-            id="errorPseudo"></label></label><br /><label>Adresse email : <br /><input id="mail" type="email" name="mail"
-            required="" /></label><br /><label>Mot de passe : <br /><input id="mdp" type="text" name="mdp" required=""
-            minlength="6" maxlength="12" /></label><br /><label>Confirmer le mot de passe : <br /><input id="confirmMdp"
-            type="text" name="confirmMdp" required="" /></label><br /><input id="submitInscription" type="submit" value="Valider les informations" /><label
-        class="error" id="errorPseudo"></label></form>
+<form id="inscriptionForm" method="post">
+        <label>Prénom : <br/>
+                <input id="prenom" type="text" name="prenom" required=""/></label><br/>
+        <label>Nom : <br/>
+                <input id="nom" type="text" name="nom" required=""/></label><br/>
+        <label>Pseudo : <br/>
+                <input id="pseudo" type="text" name="pseudo" minlength="3" maxlength="10" required=""/>
+                <label class="error" id="errorPseudo"></label></label><br/>
+        <label>Adresse email : <br/>
+                <input id="mail" type="email" name="mail" required=""/></label><br/>
+        <label>Mot de passe : <br/>
+                <input id="mdp" type="text" name="mdp" required="" minlength="6" maxlength="12"/></label><br/>
+        <label>Confirmer le mot de passe : <br/>
+                <input id="confirmMdp" type="text" name="confirmMdp" required=""/></label><br/>
+        <label> Choose ta couleur : <br/>
+                <input id="color" type="color" name="color" required=""/></label><br/>
+        <input id="submitInscription" type="submit" value="Valider les informations"/>
+        <label class="error" id="errorPseudo"></label></form>
 <script>
     $(document).ready(function () {
         $("#inscriptionForm").validate({
@@ -30,6 +40,9 @@
                 confirmMdp: {
                     "required": true,
                     "equalTo": mdp
+                },
+                color : {
+                    "required": true
                 }
             },
             messages: {
@@ -52,6 +65,9 @@
                 confirmMdp: {
                     "required": "Veuillez confirmer le mot de passe",
                     "equalTo": "Votre mot de passe n'est pas identique"
+                },
+                color: {
+                    "required": "Veuillez choisir une couleur rentrer une valeur (si ton explorateur internet date de Chirac au pouvoir)"
                 }
             },
             validClass: "success",

@@ -1,0 +1,16 @@
+<div class="contenu">
+    <h1>You loose !!!! </h1>
+    <h5>Tu peux retrouver ta défaite dans les Hightscore !</h5>
+    <input id="newGame" type="button" class="buttonNav" value="Recommencer une partie" />
+    <input id="backToAccount" type="button" class="buttonNav" value="Retour à mon compte " />
+</div>
+
+<script>
+    $("#newGame").click(function () {
+        emitNewGame()
+    });
+
+    $("#backToAccount").click(function () {
+        emitMyAccount()
+    });
+</script>

@@ -1,7 +1,7 @@
 body {
     width: 100%;
     height: 100%;
-    margin:0;
+    margin: 0;
     padding: 0;
     margin: auto;
     user-select: none;
@@ -9,116 +9,125 @@ body {
     -ms-user-select: none;
 }
 
-#canvas {
-    border: solid black 2px;
-}
-
 nav {
-font-size: 1.5vmax;
+    font-size: 1.5vmax;
 }
 
 nav ul li {
-display: inline;
-margin-left: 5%;
+    display: inline;
+    margin-left: 5%;
 }
 
 a:hover {
-background-color: black;
-color: white;
+    background-color: black;
+    color: white;
 }
 
 header {
-height: 18vmin;
-padding-top: 5vmin;
-width: 100%; 
-display: inline-block;
+    height: 18vmin;
+    padding-top: 5vmin;
+    width: 100%;
+    display: inline-block;
 
 }
 
 h1 {
-font-size: 10vmin;
+    font-size: 10vmin;
 }
 
 h1:hover {
-background-color: black;
-color: white;
+    background-color: black;
+    color: white;
 }
 
 form {
-width: 20%;
-margin: auto;
-text-align: center;
+    width: 20%;
+    margin: auto;
+    text-align: center;
 }
 
 h2 {
-font-size: 6vmin;
+    font-size: 6vmin;
 }
 
 h3 {
-font-size: 5vmin;
+    font-size: 5vmin;
 }
 
 p {
-font-size: 2vmin;
+    font-size: 2vmin;
 }
 
 span {
-font-size: 3vmin;
+    font-size: 3vmin;
 }
 
 canvas {
-/* border: 2px solid black; */
-margin: auto;
-display: block;
+    margin: auto;
+    display: block;
+    margin-top: 8vmin;
 }
 
 h2 {
-font-family: 'Raleway', sans-serif;
-margin: auto;
-text-align: center;
+    font-family: 'Raleway', sans-serif;
+    margin: auto;
+    text-align: center;
 }
 
 h3, h1, p, span {
-font-family: 'Raleway', sans-serif;
-margin: auto;
-text-align: center;
+    font-family: 'Raleway', sans-serif;
+    margin: auto;
+    text-align: center;
 }
 
 #tableau-score {
-/* display: inline-block; */
-height: 23vmin;
+    height: 23vmin;
+    margin-top: 5vmin;
 }
 
 a {
-text-decoration: none;
-color: black;
-font-family: 'Montserrat', sans-serif;
+    text-decoration: none;
+    color: black;
+    font-family: 'Montserrat', sans-serif;
 }
 
 #game1, #game2 {
-width: 40%;
-display: inline-block;
+    width: 40%;
+    display: inline-block;
 }
 
 #separator {
-width:17%;
-display: inline-block;
+    width: 17%;
+    display: inline-block;
 }
 
 footer {
-height: 200px;
+    height: 200px;
 }
 
 #tour {
-width: 20vmin;
-height: 5vmin;
-margin: auto;
+    width: 20vmin;
+    height: 5vmin;
+    margin: auto;
+    margin-bottom: 5vmin;
+}
+
+#couleur1 {
+    width: 20vmin;
+    height: 5vmin;
+    margin: auto;
+}
+
+#couleur2 {
+    width: 20vmin;
+    height: 5vmin;
+    margin: auto;
 }
 
 label.error {
-display: block;
-font-size: 2.3vmin;
-color: red;
+    display: block;
+    font-size: 2.3vmin;
+    color: red;
 }
 
 .buttonNav {
@@ -135,7 +144,7 @@ color: red;
 }
 
 .buttonNav:focus {
-    outline:0;
+    outline: 0;
     border: none;
     text-decoration: none;
     color: white;
@@ -149,7 +158,7 @@ h5 {
     margin-bottom: 3vmin;
     text-align: center;
     font-family: 'Montserrat', sans-serif;
-    font-size: 1.5vmax;
+    font-size: 3vmin;
 }
 
 .contenu {
@@ -164,10 +173,16 @@ li {
     list-style-type: square;
     padding: 0.5vmin;
     text-align: left;
-    
 }
 
 .bestScore {
     list-style: none;
     text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.5vmin;
+}
+
+.info {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 3vmin;
 }
